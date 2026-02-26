@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Brain Tumor Prediction</title>
+    <style>
+        body { 
+            font-family: Arial; 
+            text-align: center; 
+            margin-top: 50px; 
+            background: #f6f8fc;
+        }
+        form {
+            display: inline-block;
+            padding: 30px 40px;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(60, 72, 88, 0.08);
+        }
+        input[type="file"] { margin: 20px 0; }
+        input[type="submit"] {
+            background: #00c4cc;
+            color: #fff;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        input[type="submit"]:hover {
+            background: #13d8c4;
+        }
+        img { 
+            margin: 20px 0; 
+            border: 1px solid #ccc; 
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Brain Tumor Classification</h1>
+    <form action="/" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <br>
+        <input type="submit" value="Predict">
+    </form>
+</body>
+</html>
+<!-- templates/result.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result</title>
+    <style>
+        body { 
+            font-family: Arial; 
+            text-align: center; 
+            margin-top: 50px; 
+            background: #f6f8fc;
+        }
+        .result-container {
+            display: inline-block;
+            padding: 30px 40px;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(60, 72, 88, 0.08);
+        }
+        img { 
+            margin: 20px 0; 
+            border: 1px solid #ccc; 
+            border-radius: 10px;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            color: #00c4cc;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            color: #13d8c4;
+        }
+    </style>
+</head>
+<body>
+    <div class="result-container">
+        <h1>Prediction: {{ prediction }}</h1>
+        <img src="{{ url_for('static', filename=img_path) }}" alt="Uploaded Image" width="300">
+        <br>
+        <a href="/">Try another image</a>
+    </div>
+</body>
+</html>
